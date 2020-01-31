@@ -8,15 +8,12 @@ import android.widget.Toast
 import com.example.usuario.project_ia.Adapters.UserAdapter
 import com.example.usuario.project_ia.interfaces.RecyclerUserListener
 import com.example.usuario.project_ia.models.User
-import com.google.firebase.firestore.*
+
 import kotlinx.android.synthetic.main.activity_usuario_list.*
 
 class UsuarioList : AppCompatActivity() {
 
 
-    // Variables de FIrebase
-    private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var protectoBD: CollectionReference
     private val userLits: ArrayList<User> = ArrayList()
     private lateinit var adapter: UserAdapter
 
@@ -25,8 +22,6 @@ class UsuarioList : AppCompatActivity() {
         setContentView(R.layout.activity_usuario_list)
 
 
-        // Hacer referencia a la coleccion
-        protectoBD = store.collection("usuarios")
 
 
         val layoutManager = LinearLayoutManager(this)

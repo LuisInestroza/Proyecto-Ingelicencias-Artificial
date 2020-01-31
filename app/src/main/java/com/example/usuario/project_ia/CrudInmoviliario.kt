@@ -11,8 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.usuario.project_ia.models.Inmobiliario
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+
 import kotlinx.android.synthetic.main.activity_crud_inmoviliario.*
 
 
@@ -22,18 +21,12 @@ class CrudInmoviliario : AppCompatActivity() {
 
 
 
-    // Conectar a firebase
-    private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var proyectoBD: CollectionReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_inmoviliario)
 
 
-
-        // Establecer la coleccion a utilizar
-        proyectoBD = store.collection("inmobiliario")
 
 
 

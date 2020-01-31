@@ -7,16 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.usuario.project_ia.models.User
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+
 import java.util.HashMap
 
 
 class CreateUsuario : AppCompatActivity() {
 
-    // Variable para firebase
-    private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var proyectoBD: CollectionReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +20,6 @@ class CreateUsuario : AppCompatActivity() {
         setContentView(R.layout.activity_create_usuario)
 
 
-        // Establecer la conexion
-
-        proyectoBD = store.collection("usuarios")
 
         val btnAddUser = findViewById<Button>(R.id.btnCrearCuenta)
         val tvUserName = findViewById<TextView>(R.id.etNombreUsuario)
@@ -52,13 +45,7 @@ class CreateUsuario : AppCompatActivity() {
         newUser["correo"] = user.correo
         newUser["password"] = user.contraseña
 
-        proyectoBD.add(newUser)
-            .addOnCompleteListener {
-                Toast.makeText(this, "Usuario Guardado", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Usuario No Guardado", Toast.LENGTH_SHORT).show()
-            }
+
     }
 
 

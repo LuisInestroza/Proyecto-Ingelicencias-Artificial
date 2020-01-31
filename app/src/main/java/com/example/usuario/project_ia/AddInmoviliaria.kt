@@ -12,8 +12,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.usuario.project_ia.models.Inmobiliario
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+
 import kotlinx.android.synthetic.main.activity_add_inmoviliaria.*
 
 import kotlin.collections.HashMap
@@ -23,9 +22,7 @@ class AddInmoviliaria : AppCompatActivity() {
 
     val CAMERA_REQUEST = 0
 
-    // Variables de firebase
-    private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var proyectoBD: CollectionReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +38,7 @@ class AddInmoviliaria : AppCompatActivity() {
         }
 
 
-        // Establecer la coleccion a utilizar
-        proyectoBD = store.collection("inmobiliario")
+
 
 
 
@@ -101,13 +97,7 @@ class AddInmoviliaria : AppCompatActivity() {
         newInmobiliario["descripcion"] = inmobiliario.descripcion
         newInmobiliario["Imagen"] = inmobiliario.imagen
 
-        proyectoBD.add(newInmobiliario)
-            .addOnCompleteListener{
-                Toast.makeText( this, "Datos Guardados", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Los Datos no se guardaron", Toast.LENGTH_SHORT).show()
-            }
+
     }
 
 

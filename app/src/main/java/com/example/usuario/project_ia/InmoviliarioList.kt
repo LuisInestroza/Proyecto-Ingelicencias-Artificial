@@ -8,14 +8,12 @@ import android.widget.Toast
 import com.example.usuario.project_ia.Adapters.InmoviliarioAdapter
 import com.example.usuario.project_ia.interfaces.RecycleInmoviliarioListener
 import com.example.usuario.project_ia.models.Inmobiliario
-import com.google.firebase.firestore.*
+
 import kotlinx.android.synthetic.main.activity_inmoviliario_list.*
 
 class InmoviliarioList : AppCompatActivity() {
 
-    // Variables de FIrebase
-    private val store: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var protectoBD: CollectionReference
+
     private val inmuebleList: ArrayList<Inmobiliario> = ArrayList()
     private lateinit var adapter: InmoviliarioAdapter
 
@@ -25,7 +23,7 @@ class InmoviliarioList : AppCompatActivity() {
         setContentView(R.layout.activity_inmoviliario_list)
 
 
-        protectoBD = store.collection("inmobiliario")
+
 
         val layoutManager = LinearLayoutManager(this)
         adapter = InmoviliarioAdapter(inmuebleList, object: RecycleInmoviliarioListener{
