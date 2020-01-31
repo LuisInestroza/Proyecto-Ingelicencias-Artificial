@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.usuario.project_ia.models.User
 
 import java.util.HashMap
 
@@ -27,26 +26,9 @@ class CreateUsuario : AppCompatActivity() {
         val tvPassword = findViewById<TextView>(R.id.etPassword)
 
 
-        btnAddUser.setOnClickListener {
-            val users = tvUserName.text
-            if (users.isNotEmpty()){
-
-                val user = User(users.toString(), tvCorreo.text.toString(), tvPassword.text.toString())
-                saveUser(user)
-            }else{
-                Toast.makeText(this, "Debes de llenar todos los campos", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
-    private fun saveUser(user: User){
-        val newUser = HashMap<String, Any>()
-        newUser["userName"] = user.usuario
-        newUser["correo"] = user.correo
-        newUser["password"] = user.contraseña
 
-
-    }
 
 
 
