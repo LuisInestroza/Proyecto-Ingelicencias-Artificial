@@ -44,6 +44,7 @@ class AddInmoviliaria : AppCompatActivity() {
     private val IMAGEN_CAPTURE_CODE = 1001
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_inmoviliaria)
@@ -94,6 +95,24 @@ class AddInmoviliaria : AppCompatActivity() {
             }
         }
 
+//        Hacer conexion  a la galeria
+        btnGaleria.setOnClickListener {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ){
+
+                    val permiso = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permiso, PERMISSION_CODE_GALERY)
+
+                }else{
+
+                    abrirGaleria()
+                }
+            }else{
+                abrirGaleria()
+            }
+
+        }
+
     }
 
     private fun agregarInmoviliario(){
@@ -105,8 +124,6 @@ class AddInmoviliaria : AppCompatActivity() {
         val descripcion = editTextDescripcion.text.toString().trim()
         val imagen = imageViewImagen.toString()
 
-//        TODO() Implementar conxion a la camara y galeria del movil
-//        TODO() Implementar registros de imagenes a la base de datos firebase
 
 
 //        validar que los campos no esten vacios
@@ -162,7 +179,7 @@ class AddInmoviliaria : AppCompatActivity() {
             PERMISSION_CODE ->{
                 if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 
-
+                    abrirGaleria()
 
                 }else{
                     Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show()
@@ -173,10 +190,32 @@ class AddInmoviliaria : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE_GALERY){
             ivInmueble.setImageURI(imagen)
+            ivInmueble.setImageURI(data?.data)
+
         }
+
     }
+
+
+//    Funcionalidad e acceder a la galeria
+
+
+    private fun abrirGaleria(){
+
+        val intento = Intent(Intent.ACTION_PICK)
+        intento.type ="image/*"
+        startActivityForResult(intento, IMAGE_PICK_CODE_GALERY)
+
+    }
+    companion object{
+
+    private val IMAGE_PICK_CODE_GALERY = 1000
+    private val PERMISSION_CODE_GALERY = 1001
+}
+
+
 
 
 
