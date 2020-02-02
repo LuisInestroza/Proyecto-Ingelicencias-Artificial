@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        Cambiar el nombre del action bar
+        supportActionBar?.setTitle("INMOVILIARIA")
+
 
         // Llamar el activity para crear una cuenta para el usuario
         btnCuenta.setOnClickListener {

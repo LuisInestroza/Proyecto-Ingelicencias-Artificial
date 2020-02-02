@@ -45,8 +45,9 @@ class CreateUsuario : AppCompatActivity() {
 
         if (coneccionInfomacion != null && coneccionInfomacion.isConnected){
 
-            Toast.makeText(baseContext, "Conectado", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(baseContext, "Conectado", Toast.LENGTH_SHORT).show()
         }
+
         else {
             Toast.makeText(baseContext, "NO HAY CONEXIÓN A INTERNET", Toast.LENGTH_SHORT).show()
         }

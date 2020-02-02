@@ -24,7 +24,11 @@
 
         <activity android:name=".AddInmoviliaria">
         </activity>
-        <activity android:name=".CreateUsuario">
+        <activity android:name=".CreateUsuario"
+
+                android:label="@string/registro">
+                <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
         </activity>
         <activity android:name=".CrudInmoviliario">
         </activity>
