@@ -38,4 +38,5 @@
     <string name="etPrecioCRUD"></string>
     <string name="etDescripcionCRUD"></string>
     <string name="registro">Registro de Usuarios</string>
+    <string name="moviliario">Agregar Inmoviliario</string>
 </resources>

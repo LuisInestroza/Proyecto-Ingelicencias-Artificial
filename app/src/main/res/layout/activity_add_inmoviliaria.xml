@@ -8,94 +8,104 @@
         android:background="@drawable/backgroung"
         tools:context=".AddInmoviliaria">
 
-    <TextView
-            android:text="@string/tvAgregarInmoviliario"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
-            android:id="@+id/tvAgregarInmoviliario"
-            tools:text="Agregar Inmoviliario" android:textSize="30sp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            android:textStyle="bold" android:textColor="#000"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/ivInmueble"/>
     <EditText
+            android:id="@+id/etDescripcion"
             android:layout_width="346dp"
             android:layout_height="72dp"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="Descripción"
             android:inputType="textPersonName"
             android:text="@string/etDescripcion"
-            android:ems="10"
-            android:id="@+id/etDescripcion"
-            android:hint="Descripción" android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginEnd="6dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="6dp" app:layout_constraintHorizontal_bias="0.568"
-            app:layout_constraintBottom_toTopOf="@+id/btnEliminarInmueble"
-            android:layout_marginBottom="12dp"
-            android:textColorLink="#000000" android:textStyle="bold" android:textColorHint="#FFFFFF"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/etPrecio"
+            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintStart_toStartOf="@+id/etPrecio"
+            app:layout_constraintTop_toBottomOf="@+id/etPrecio" />
+
     <EditText
-            android:layout_width="219dp"
+            android:id="@+id/etPrecio"
+            android:layout_width="346dp"
             android:layout_height="40dp"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:hint="Precio"
             android:inputType="textPersonName"
             android:text="@string/etPrecio"
-            android:ems="10"
-            android:id="@+id/etPrecio" android:layout_marginEnd="12dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="12dp" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintHorizontal_bias="0.168"
-            android:hint="Precio" android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/etDescripcion"
-            android:textColor="#FFFFFF" android:textColorLink="#000000" android:textColorHint="#FFFFFF"
-            android:textStyle="bold"/>
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/etCategoria"
+            app:layout_constraintStart_toStartOf="@+id/etCategoria"
+            app:layout_constraintTop_toBottomOf="@+id/etCategoria" />
+
     <Button
-            android:text="@string/btnAgregarInmueble"
+            android:id="@+id/btnEliminarInmueble"
             android:layout_width="140dp"
             android:layout_height="52dp"
-            android:id="@+id/btnEliminarInmueble" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" tools:text="Agregar"
-            app:layout_constraintHorizontal_bias="0.498"/>
+            android:layout_marginBottom="16dp"
+            android:text="@string/btnAgregarInmueble"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etDescripcion"
+            app:layout_constraintStart_toStartOf="@+id/etDescripcion"
+            app:layout_constraintTop_toBottomOf="@+id/etDescripcion"
+            tools:text="Agregar" />
+
     <ImageView
-            android:layout_width="356dp"
-            android:layout_height="194dp" app:srcCompat="@drawable/image_no_found"
             android:id="@+id/ivInmueble"
+            android:layout_width="356dp"
+            android:layout_height="194dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.487"
-            android:layout_marginBottom="380dp" app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_photo_black_24dp" />
+
     <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/etCategoria"
+            android:layout_width="346dp"
             android:layout_height="46dp"
-            android:inputType="textPersonName"
+            android:layout_marginTop="32dp"
             android:ems="10"
-            android:id="@+id/etCategoria" android:layout_marginEnd="12dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="12dp" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintHorizontal_bias="0.163" android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/etPrecio" android:hint="Categoria"
-            android:textColor="#000000" android:textColorLink="#000000" android:textColorHint="#FFFFFF"
-            android:textStyle="bold"/>
+            android:hint="Categoria"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/btnGaleria"
+            app:layout_constraintHorizontal_bias="0.446"
+            app:layout_constraintStart_toStartOf="@+id/btnCamara"
+            app:layout_constraintTop_toBottomOf="@+id/btnCamara" />
+
     <Button
+            android:id="@+id/btnCamara"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:id="@+id/btnCamara"
+            android:layout_marginTop="4dp"
             android:drawableBottom="@drawable/baseline_add_a_photo_black_48"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.328" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/ivInmueble" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/etCategoria"/>
+            app:layout_constraintEnd_toEndOf="@+id/ivInmueble"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/ivInmueble"
+            app:layout_constraintTop_toBottomOf="@+id/ivInmueble" />
+
     <Button
+            android:id="@+id/btnGaleria"
             android:layout_width="wrap_content"
             android:layout_height="69dp"
-            android:id="@+id/btnGaleria"
+            android:layout_marginTop="4dp"
             android:drawableBottom="@drawable/baseline_add_photo_alternate_black_48"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.723" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/ivInmueble" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/etCategoria"/>
+            app:layout_constraintEnd_toEndOf="@+id/ivInmueble"
+            app:layout_constraintHorizontal_bias="0.652"
+            app:layout_constraintStart_toStartOf="@+id/ivInmueble"
+            app:layout_constraintTop_toBottomOf="@+id/ivInmueble" />
 </android.support.constraint.ConstraintLayout>

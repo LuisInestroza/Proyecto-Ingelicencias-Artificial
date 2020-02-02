@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddInmoviliaria">
+        <activity android:name=".AddInmoviliaria"
+                android:label="@string/moviliario">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Menu"/>
         </activity>
         <activity android:name=".CreateUsuario"
 
