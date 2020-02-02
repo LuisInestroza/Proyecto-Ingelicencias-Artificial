@@ -27,11 +27,7 @@ class CreateUsuario : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_usuario)
 
-//        Cambiar el nombre del action bat
-//        supportActionBar?.setTitle("Registro de Usuarios")
-
-
-//        Llamar a los elementos del activity create_user
+//        Llamar a los elementos del activity create_usuario
 
         editTextNombre = findViewById(R.id.editTextNombreUsuario)
         editTextCorreo = findViewById(R.id.editTextCorreoUsuario)

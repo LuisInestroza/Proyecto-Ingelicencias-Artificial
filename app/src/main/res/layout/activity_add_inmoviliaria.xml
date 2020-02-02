@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/etCategoria" />
 
     <Button
-            android:id="@+id/btnEliminarInmueble"
+            android:id="@+id/btnAddInmueble"
             android:layout_width="140dp"
             android:layout_height="52dp"
             android:layout_marginBottom="16dp"
