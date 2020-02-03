@@ -14,15 +14,24 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.usuario.project_ia.Clases.Inmoviliaria
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 
 
 import kotlinx.android.synthetic.main.activity_add_inmoviliaria.*
+import java.io.IOError
+import java.io.IOException
+import java.util.*
 import java.util.jar.Manifest
 
 import kotlin.collections.HashMap
@@ -40,8 +49,16 @@ class AddInmoviliaria : AppCompatActivity() {
 
 //    Permisos para la camara
     private val PERMISSION_CODE = 1000
-    var imagen: Uri? = null
+    var imagi: Uri? = null
     private val IMAGEN_CAPTURE_CODE = 1001
+
+
+//    Guardar la imagen en la store
+    private var imagePreview: ImageView? = null
+    private val PICK_IMAGE_REQUEST = 1
+//    private var filePath: Uri? = null
+    private var firebaseStorage: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
 
 
 
@@ -69,6 +86,10 @@ class AddInmoviliaria : AppCompatActivity() {
         else {
             Toast.makeText(baseContext, "NO HAY CONEXIÓN A INTERNET", Toast.LENGTH_SHORT).show()
         }
+
+//        Conectar a firebase store
+        firebaseStorage = FirebaseStorage.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
 
 
 
@@ -124,29 +145,58 @@ class AddInmoviliaria : AppCompatActivity() {
         val descripcion = editTextDescripcion.text.toString().trim()
         val imagen = imageViewImagen.toString()
 
+        if(imagi != null){
+            val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
+            ref?.putFile(imagi!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
+                Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show()
+
+                if (categoria.isEmpty() || descripcion.isEmpty()){
 
 
-//        validar que los campos no esten vacios
-        if (categoria.isEmpty() || descripcion.isEmpty()){
+                    editTextCategoria.error = "Debes ingresar la categoria"
+                    editTextDescripcion.error = "Debes de ingresar la descripcion"
+                    return@OnSuccessListener
+
+                }else{
+
+//                   Obtener la URL
+
+                     ref?.downloadUrl?.addOnSuccessListener {
+                        Log.d("RegisterActivity", "imagen url  $it")
+
+                         val url = it
+
+//                       n el caso que el usuario haya llenado los campos
+//                       Insertar los nuevos datos a firebase
+
+                         val conexionFirebase = FirebaseDatabase.getInstance().getReference("Inmoviliarios")
+                         val inmoviliarioID = conexionFirebase.push().key
+                         val nuevoInmoviliario = Inmoviliaria(inmoviliarioID.toString(), categoria, precio, descripcion, url.toString())
+
+//                          Hacer la insercion de a la base de datos
+                         conexionFirebase.child(inmoviliarioID.toString()).setValue(nuevoInmoviliario).addOnCompleteListener {
+                             Toast.makeText(this, "Inmoviliario Registrado", Toast.LENGTH_SHORT).show()
+                         }
+                     }
 
 
-            editTextCategoria.error = "Debes ingresar la categoria"
-            editTextDescripcion.error = "Debes de ingresar la descripcion"
-            return
+
+                }
+
+
+            })?.addOnFailureListener(OnFailureListener { e ->
+                Toast.makeText(this, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
+            })
+
+            //        validar que los campos no esten vacios
+
         }else{
-
-//            En el caso que el usuario haya llenado los campos
-//            Insertar los nuevos datos a firebase
-
-            val conexionFirebase = FirebaseDatabase.getInstance().getReference("Inmoviliarios")
-            val inmoviliarioID = conexionFirebase.push().key
-            val nuevoInmoviliario = Inmoviliaria(inmoviliarioID.toString(), categoria, precio, descripcion, imagen)
-
-//            Hacer la insercion de a la base de datos
-            conexionFirebase.child(inmoviliarioID.toString()).setValue(nuevoInmoviliario).addOnCompleteListener {
-                Toast.makeText(this, "Inmoviliario Registrado", Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
         }
+
+
+
+
 
 
 
@@ -158,10 +208,10 @@ class AddInmoviliaria : AppCompatActivity() {
     val valor = ContentValues()
     valor.put(MediaStore.Images.Media.TITLE, "Nueva Imagen")
     valor.put(MediaStore.Images.Media.DESCRIPTION, "De la camara")
-    imagen = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, valor)
+    imagi = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, valor)
 
     val camara= Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-    camara.putExtra(MediaStore.EXTRA_OUTPUT, imagen)
+    camara.putExtra(MediaStore.EXTRA_OUTPUT, imagi)
 
     startActivityForResult(camara, IMAGEN_CAPTURE_CODE)
 
@@ -191,8 +241,20 @@ class AddInmoviliaria : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE_GALERY){
-            ivInmueble.setImageURI(imagen)
+            ivInmueble.setImageURI(imagi)
             ivInmueble.setImageURI(data?.data)
+
+            if(data == null || data.data == null){
+                return
+            }
+            imagi = data.data
+            try {
+                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imagi)
+                imagePreview?.setImageBitmap(bitmap)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
 
         }
 
