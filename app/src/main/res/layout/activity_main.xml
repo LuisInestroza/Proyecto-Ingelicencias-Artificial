@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-android:background="@drawable/backgroung">
+android:background="@drawable/house">
 
     <EditText
             android:id="@+id/etUsuario"
@@ -21,8 +21,8 @@ android:background="@drawable/backgroung">
             android:hint="Nombre de Usuario"
             android:inputType="textPersonName"
             android:text="@string/etUsuario"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textColorLink="#000000"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +38,8 @@ android:background="@drawable/backgroung">
             android:hint="Contraseña"
             android:inputType="textPersonName"
             android:text="@string/etPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textColorLink="#000000"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/etUsuario"
