@@ -44,7 +44,10 @@
         </activity>
         <activity android:name=".InmoviliarioList">
         </activity>
-        <activity android:name=".UsuarioList">
+        <activity android:name=".UsuarioList"
+                android:label="@string/listInmoviliarios">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MainActivity"/>
         </activity>
 
 

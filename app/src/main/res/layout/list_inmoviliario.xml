@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="418dp" />
+
+
+    <Button
+            android:id="@+id/btnEliminarInmueble"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnEliminarInmueble"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="@+id/tvDescripcionShow"
+            app:layout_constraintHorizontal_bias="0.871"
+            app:layout_constraintStart_toStartOf="@+id/tvDescripcionShow"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescripcionShow"
+            tools:text="Eliminar" />
+
+    <ImageView
+            android:id="@+id/ivInmuebleShow"
+            android:layout_width="367dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_photo_black_24dp" />
+
+    <Button
+            android:id="@+id/btnUpdateInmueble"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnUpdateInmueble"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="@+id/tvDescripcionShow"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toStartOf="@+id/tvDescripcionShow"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescripcionShow"
+            tools:text="Actualizar" />
+
+    <TextView
+            android:id="@+id/tvCategoriaShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Categoria"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivInmuebleShow"
+            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintStart_toStartOf="@+id/ivInmuebleShow"
+            app:layout_constraintTop_toBottomOf="@+id/ivInmuebleShow" />
+
+    <TextView
+            android:id="@+id/tvPrecioShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Precio"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvCategoriaShow"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvCategoriaShow"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategoriaShow" />
+
+    <TextView
+            android:id="@+id/tvDescripcionShow"
+            android:layout_width="342dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="12dp"
+            android:text="Descripcion"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvPrecioShow"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvPrecioShow"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrecioShow" />
+
+
+</android.support.constraint.ConstraintLayout>
