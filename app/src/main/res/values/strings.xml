@@ -40,4 +40,6 @@
     <string name="registro">Registro de Usuarios</string>
     <string name="moviliario">Agregar Inmoviliario</string>
     <string name="listInmoviliarios">Lista de Inmoviliarios</string>
+    <string name="listUsuarios">Lista de Usuarios</string>
+    <string name="menue">MENÚ</string>
 </resources>

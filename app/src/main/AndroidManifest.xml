@@ -45,14 +45,20 @@
         </activity>
         <activity android:name=".CrudInmoviliario">
         </activity>
-        <activity android:name=".Menu">
-        </activity>
-        <activity android:name=".InmoviliarioList">
-        </activity>
-        <activity android:name=".UsuarioList"
-                android:label="@string/listInmoviliarios">
+        <activity android:name=".Menu"
+                android:label="@string/menue">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                     android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".InmoviliarioList"
+                android:label="@string/listInmoviliarios">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Menu"/>
+        </activity>
+        <activity android:name=".UsuarioList"
+                android:label="@string/listUsuarios">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Menu"/>
         </activity>
 
 

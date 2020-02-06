@@ -9,7 +9,7 @@
         tools:context=".UsuarioList">
 
     <ListView
-            android:id="@+id/listInmueblesShow"
+            android:id="@+id/listUsuariosShow"
             android:layout_width="391dp"
             android:layout_height="677dp"
             app:layout_constraintBottom_toBottomOf="parent"

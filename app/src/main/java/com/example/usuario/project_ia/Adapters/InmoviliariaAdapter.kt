@@ -1,9 +1,6 @@
-package com.example.usuario.project_ia
+package com.example.usuario.project_ia.Adapters
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.media.Image
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +8,11 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.usuario.project_ia.Clases.Inmoviliaria
+import com.example.usuario.project_ia.R
 import com.squareup.picasso.Picasso
 
 
-class InmoviliaraAdapter (val mCtx: Context, val layoutId: Int, val inmoviliariaList:List<Inmoviliaria>)
+class InmoviliariaAdapter (val mCtx: Context, val layoutId: Int, val inmoviliariaList:List<Inmoviliaria>)
     :ArrayAdapter<Inmoviliaria>(mCtx, layoutId, inmoviliariaList){
 
 
