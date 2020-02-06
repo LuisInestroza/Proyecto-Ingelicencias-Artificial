@@ -6,11 +6,16 @@
 
 <!--    Persimidos para acceder a internet-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
 <!--    Permisos para acceder a la camara del dispositivo movil-->
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
 <!--    Permisos para acceder a la galeria del dispostivo movil-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+<!--    Permisos de Internet-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
             android:allowBackup="true"
