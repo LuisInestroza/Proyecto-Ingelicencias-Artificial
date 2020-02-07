@@ -1,14 +1,18 @@
 package com.example.usuario.project_ia.Adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.usuario.project_ia.Clases.Inmoviliaria
 import com.example.usuario.project_ia.R
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 
 
@@ -32,6 +36,10 @@ class InmoviliariaAdapter (val mCtx: Context, val layoutId: Int, val inmoviliari
         val descripcion = view.findViewById<TextView>(R.id.tvDescripcionShow)
         val imagen = view.findViewById<ImageView>(R.id.ivInmuebleShow)
 
+        // Declaracion de variables para los botones de eliminar y actualizar
+        val btnActualizar = view.findViewById<TextView>(R.id.btnUpdateInmueble)
+        val btnEliminar = view.findViewById<TextView>(R.id.btnEliminarInmueble)
+
 
         val inmoviliaria = inmoviliariaList[position]
 
@@ -42,9 +50,42 @@ class InmoviliariaAdapter (val mCtx: Context, val layoutId: Int, val inmoviliari
         // Mostrar la imagen
         Picasso.with(mCtx).load(inmoviliaria.imagem).into(imagen)
 
+        // Acciones de eliminar y actualizar
+        btnEliminar.setOnClickListener {
+            elimininarInmoviliario(inmoviliaria)
+        }
+
 
         return view
 
+    }
+
+    private fun elimininarInmoviliario(inmoviliaria: Inmoviliaria){
+        //        Crear un alert dialog para confirmar la eliminación
+//        de un registro
+        val builder = AlertDialog.Builder(mCtx)
+        builder.setMessage("¿Desea eliminar este registro?")
+        builder.setPositiveButton("Borrar", object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                // Conexion a firebase
+                val conexionFirebase = FirebaseDatabase.getInstance().getReference("Inmoviliarios")
+//              Elinimar el registro a la base de datos.
+                conexionFirebase.child(inmoviliaria.id).removeValue()
+                Toast.makeText(mCtx, "inmoviliario Eliminado", Toast.LENGTH_SHORT).show()
+            }
+
+
+        })
+        builder.setNegativeButton("Cancelar", object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+//                Toast.makeText(mCtx, "Cancelado", Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
+//        Motrar el builder de eliminar para confirmar al usuario
+        val alerta = builder.create()
+        alerta.show()
     }
 
 

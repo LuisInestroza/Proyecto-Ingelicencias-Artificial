@@ -22,10 +22,7 @@ class Menu : AppCompatActivity() {
             startActivity(Intent(this, InmoviliarioList::class.java))
         }
 
-        // Llamar el activity para crear una cuenta para el usuario
-        btnModificar.setOnClickListener {
-            startActivity(Intent(this, CrudInmoviliario::class.java))
-        }
+
 
         // Llamar el activity para crear una cuenta para el usuario
         btnUsuarios.setOnClickListener {
