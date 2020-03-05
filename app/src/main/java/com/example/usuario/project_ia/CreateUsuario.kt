@@ -95,9 +95,4 @@ class CreateUsuario : AppCompatActivity() {
 
 }
 
-
-
-
-
-
 }

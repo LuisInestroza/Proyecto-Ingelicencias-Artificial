@@ -71,10 +71,7 @@ class InmoviliariaAdapter (val mCtx: Context, val layoutId: Int, val inmoviliari
             elimininarInmoviliario(inmoviliaria)
         }
 
-        // Acciones de actualizar los registros
-        btnActualizar.setOnClickListener {
-            actualizarInmoviliarios(inmoviliaria)
-        }
+
 
 
         return view
@@ -111,12 +108,7 @@ class InmoviliariaAdapter (val mCtx: Context, val layoutId: Int, val inmoviliari
 
 
 
-    private fun actualizarInmoviliarios(inmoviliaria: Inmoviliaria){
 
-
-
-
-    }
 
 
 

@@ -63,10 +63,5 @@ class InmoviliarioList : AppCompatActivity() {
             }
         })
 
-
-
-
     }
-
-
 }

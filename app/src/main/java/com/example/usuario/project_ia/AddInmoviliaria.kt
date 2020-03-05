@@ -2,12 +2,10 @@ package com.example.usuario.project_ia
 
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
@@ -29,12 +27,8 @@ import com.google.firebase.storage.UploadTask
 
 
 import kotlinx.android.synthetic.main.activity_add_inmoviliaria.*
-import java.io.IOError
 import java.io.IOException
 import java.util.*
-import java.util.jar.Manifest
-
-import kotlin.collections.HashMap
 
 class AddInmoviliaria : AppCompatActivity() {
 
@@ -143,7 +137,7 @@ class AddInmoviliaria : AppCompatActivity() {
         val precio = editTextPrecio.text.toString().toInt()
         val categoria = editTextCategoria.text.toString().trim()
         val descripcion = editTextDescripcion.text.toString().trim()
-        val imagen = imageViewImagen.toString()
+
 
         if(imagi != null){
             val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
